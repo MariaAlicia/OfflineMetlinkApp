@@ -4,17 +4,7 @@ package com.example.maria.offlinemetlinkapp.model;
  * Created by bobl on 7/6/16.
  */
 public class trips {
-    /*
-     `route_id` int(11) DEFAULT NULL,
-  `service_id` int(11) DEFAULT NULL,
-  `trip_id` text,
-  `trip_headsign` text,
-  `direction_id` int(11) DEFAULT NULL,
-  `block_id` text,
-  `shape_id` text,
-  `wheelchair_accessible` text,
-  `bikes_allowed` int(11) DEFAULT NULL
-     */
+
     int routeId;
     int serviceId;
     String tripId;
@@ -24,6 +14,7 @@ public class trips {
     String shapeId;
     String wheelchairAccessible;
     int bikesAllowed;
+    
     public trips(int route_id,int service_id,String trip_id,String trip_headsign,int direction_id,String block_id,String shape_id,String wheelchair_accessible,int bikes_allowed){
         routeId = route_id;
         serviceId = service_id;
