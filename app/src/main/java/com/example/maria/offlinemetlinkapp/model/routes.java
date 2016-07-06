@@ -3,17 +3,8 @@ package com.example.maria.offlinemetlinkapp.model;
 /**
  * Created by bobl on 7/6/16.
  */
-public class routes {
-    /*`route_id` text,
-            `agency_id` text,
-            `route_short_name` text,
-            `route_long_name` text,
-            `route_desc` text,
-            `route_type` int(11)
-            `route_url` text,
-             `route_color` text,
-            `route_text_color` text
-            */
+class routes {
+
     String routeId;
     String routeShortName;
     String routeLongName;
@@ -22,7 +13,8 @@ public class routes {
     String routeUrl;
     String routeColor;
     String routeTextColor;
-    public routes(String route_id, String route_short_name, String route_long_name, String route_desc,int route_type, String route_url,String route_color, String route_text_color){
+
+    protected routes(String route_id, String route_short_name, String route_long_name, String route_desc,int route_type, String route_url,String route_color, String route_text_color){
         routeId = route_id;
         routeShortName = route_short_name;
         routeLongName = route_long_name;

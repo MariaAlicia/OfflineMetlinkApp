@@ -3,18 +3,13 @@ package com.example.maria.offlinemetlinkapp.model;
 /**
  * Created by bobl on 7/6/16.
  */
-public class stop_times {
-    /*
-   `trip_id` text,
-  `arrival_time` text,
-  `departure_time` text,
-  `stop_id` int(11) DEFAULT NULL
+class stop_times {
 
-    * */
     String tripId;
     String arrivalTime;
     String departureTime;
     int stopId;
+
     public stop_times(String trip_id,String arrival_time,String departure_time,int stop_id){
         tripId = trip_id;
         arrivalTime = arrival_time;
