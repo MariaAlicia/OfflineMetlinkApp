@@ -14,6 +14,11 @@ class routes {
     String routeColor;
     String routeTextColor;
 
+    //------constructors----------------
+
+    public routes(){
+    }
+
     protected routes(String route_id, String route_short_name, String route_long_name, String route_desc,int route_type, String route_url,String route_color, String route_text_color){
         routeId = route_id;
         routeShortName = route_short_name;
@@ -24,7 +29,9 @@ class routes {
         routeColor = route_color;
         routeTextColor = route_text_color;
     }
-    //------getter----------------
+
+    //------getters----------------
+
     public String getRouteId() {
         return routeId;
     }
@@ -56,8 +63,8 @@ class routes {
     public String getRouteTextColor() {
         return routeTextColor;
     }
-    //------setter----------------
 
+    //------setters----------------
 
     public void setRouteId(String routeId) {
         this.routeId = routeId;
