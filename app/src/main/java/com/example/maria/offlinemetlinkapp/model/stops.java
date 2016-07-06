@@ -17,6 +17,11 @@ public class stops {
     String parentStation;
     String stopTimezone;
 
+    //------constructors----------------
+
+    public stops(){
+    }
+
     public stops(int stop_id,int stop_code,String stop_name,String stop_desc, double stop_lat,double stop_lon,int zone_id,String stop_url,int location_type,String parent_station,String stop_timezone){
         int stopId = stop_id;
         int stopCode = stop_code;
@@ -31,7 +36,7 @@ public class stops {
         String stopTimezone = stop_timezone;
     }
 
-    //------getter----------------
+    //------getters----------------
 
     public int getStopId() {
         return stopId;
@@ -76,7 +81,8 @@ public class stops {
     public String getStopTimezone() {
         return stopTimezone;
     }
-    //------setter----------------
+
+    //------setters----------------
 
     public void setStopId(int stopId) {
         this.stopId = stopId;

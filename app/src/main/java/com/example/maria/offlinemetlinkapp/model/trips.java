@@ -14,7 +14,12 @@ public class trips {
     String shapeId;
     String wheelchairAccessible;
     int bikesAllowed;
-    
+
+    //------constructors----------------
+
+    public trips(){
+    }
+
     public trips(int route_id,int service_id,String trip_id,String trip_headsign,int direction_id,String block_id,String shape_id,String wheelchair_accessible,int bikes_allowed){
         routeId = route_id;
         serviceId = service_id;
@@ -27,7 +32,7 @@ public class trips {
         bikesAllowed = bikes_allowed;
     }
 
-    //------getter----------------
+    //------getters----------------
 
     public int getRouteId() {
         return routeId;
@@ -65,7 +70,7 @@ public class trips {
         return bikesAllowed;
     }
 
-    //------setter----------------
+    //------setters----------------
 
     public void setRouteId(int routeId) {
         this.routeId = routeId;
