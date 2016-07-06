@@ -18,17 +18,19 @@
         android:layout_marginLeft="20dp"
         android:textColor="#ffffff"
         android:layout_marginTop="100dp"
-        android:id="@+id/hi"/>
+        android:id="@+id/stopInput"/>
 
     <EditText
         android:layout_width="100dp"
-        android:layout_height="40dp"
+        android:layout_height="30dp"
         android:inputType="phone"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:layout_marginLeft="20dp"
+        android:paddingLeft="8dp"
         android:maxLength="4"
+        android:textCursorDrawable="@null"
         android:background="#ffffff"
-        android:layout_below="@+id/hi"
+        android:layout_below="@+id/stopInput"
         />
 
     <TextView
@@ -46,12 +48,12 @@
     <Button
         android:layout_width="70dp"
         android:layout_height="45dp"
-        android:layout_toRightOf="@+id/hi"
+        android:layout_toRightOf="@+id/stopInput"
         android:textSize="20dp"
         android:layout_marginLeft="20dp"
         android:text="Go"
         android:id="@+id/go"
-        android:layout_below="@+id/hi"/>
+        android:layout_below="@+id/stopInput"/>
 
     <Spinner
         android:id="@+id/spinner"
@@ -66,7 +68,7 @@
     <Button
         android:layout_width="70dp"
         android:layout_height="45dp"
-        android:layout_toRightOf="@+id/hi"
+        android:layout_toRightOf="@+id/stopInput"
         android:textSize="20dp"
         android:layout_marginLeft="20dp"
         android:text="Go"
