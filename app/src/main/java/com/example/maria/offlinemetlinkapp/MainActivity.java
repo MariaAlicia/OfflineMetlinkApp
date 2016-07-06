@@ -14,20 +14,20 @@ import java.util.Arrays;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    Button b1, b2;
+    Button stopBtn, routeBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        b1=(Button)findViewById(R.id.go);
-        b2=(Button)findViewById(R.id.go2);
+        stopBtn =(Button)findViewById(R.id.go);
+        routeBtn =(Button)findViewById(R.id.altGo);
         // Spinner element
         final Spinner s = (Spinner) findViewById(R.id.spinner);
 
         //button for entering stop number
-        b1.setOnClickListener(new View.OnClickListener() {
+        stopBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 setContentView(R.layout.route_content);
@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //Button for when selecting route from drop down
-        b2.setOnClickListener(new View.OnClickListener() {
+        routeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 setContentView(R.layout.route_content);
