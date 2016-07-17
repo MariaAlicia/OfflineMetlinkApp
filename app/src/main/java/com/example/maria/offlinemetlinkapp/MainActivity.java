@@ -1,5 +1,6 @@
 package com.example.maria.offlinemetlinkapp;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -28,21 +30,31 @@ public class MainActivity extends AppCompatActivity {
 	    routeBtn =(Button)findViewById(R.id.routeGo);
 	    stopInput = (EditText)findViewById(R.id.stopInput);
 	    routeSpinner = (Spinner)findViewById(R.id.routeSpinner);
-	    setupMain();
+	    setupListeners();
     }
 
-	private void setupMain(){
+	private void setupListeners(){
         //Button for entering stop number
         stopBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setContentView(R.layout.route_content);
+                /*setContentView(R.layout.route_content);
                 ListView mainListView = (ListView) findViewById( R.id.mainListView );
                 String[] times = new String[]{};//from method
                 ArrayList<String> busTimes = new ArrayList<String>();
                 busTimes.addAll( Arrays.asList(times));
                 ArrayAdapter<String> listAdapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_list_item_1, busTimes);
-                mainListView.setAdapter( listAdapter );
+                mainListView.setAdapter( listAdapter );*/
+
+	            String stopId = stopInput.getText().toString();
+
+	            if(stopId.length() < 4){
+		            Toast.makeText(MainActivity.this, "Invalid stop", Toast.LENGTH_SHORT).show();
+		            return;
+	            }
+
+	            Intent i = new Intent(getApplicationContext(), StopTimesActivity.class);
+	            startActivity(i);
             }
         });
 
