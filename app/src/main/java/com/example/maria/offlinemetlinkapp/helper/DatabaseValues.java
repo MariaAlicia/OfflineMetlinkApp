@@ -37,8 +37,12 @@ public class DatabaseValues {
         protected final String COLUMB_BIKES_ALLOWED = "bikes_allowed";
 
         protected final String[] ALL_COLUMBS = {COLUMB_TRIP_ID, COlUMB_ROUTE_ID, COLUMB_SERVICE_ID, COLUMB_TRIP_HEADSIGN,
-            COLUMB_TRIP_HEADSIGN, COLUMB_DIRECTION_ID, COLUMB_BLOCK_ID, COLUMB_SHAPE_ID, COLUMB_WHEELCHAIR_ACCESSIBILE, COLUMB_BIKES_ALLOWED};
+            COLUMB_TRIP_HEADSIGN, COLUMB_DIRECTION_ID, COLUMB_BLOCK_ID, COLUMB_SHAPE_ID, COLUMB_WHEELCHAIR_ACCESSIBILE,
+                COLUMB_BIKES_ALLOWED};
 
+        protected final String CREATE_TABLE_TRIP = "CREATE TABLE trips ("+ALL_COLUMBS[0]+" INTERGER,"+ALL_COLUMBS[1]+" TEXT,"+
+                ALL_COLUMBS[2]+ " TEXT"+ALL_COLUMBS[3]+" INTEGER,"+ALL_COLUMBS[4]+" TEXT,"+ALL_COLUMBS[5]+" TEXT,"+
+                ALL_COLUMBS[6]+" TEXT,"+ALL_COLUMBS[7]+" INTEGER)";
         protected TABLE_TRIP(){
             //empty
         }
@@ -57,8 +61,12 @@ public class DatabaseValues {
         protected final String COLUMB_PARENT_STATION = "parent_station";
         protected final String COLUMB_STOP_TIMEZONE = "stop_timezone";
 
-        protected final String[] ALL_COLUMBS = {COLUMB_STOP_ID, COlUMB_STOP_CODE, COLUMB_STOP_NAME, COLUMB_STOP_DESC, COLUMB_STOP_LAT, COLUMB_STOP_LON,
-            COLUMB_ZONE_ID, COLUMB_STOP_URL, COLUMB_LOCATION_TYPE, COLUMB_PARENT_STATION, COLUMB_STOP_TIMEZONE};
+        protected final String[] ALL_COLUMBS = {COLUMB_STOP_ID, COlUMB_STOP_CODE, COLUMB_STOP_NAME, COLUMB_STOP_DESC,
+                COLUMB_STOP_LAT, COLUMB_STOP_LON, COLUMB_ZONE_ID, COLUMB_STOP_URL, COLUMB_LOCATION_TYPE,
+                COLUMB_PARENT_STATION, COLUMB_STOP_TIMEZONE};
+        protected final String CREATE_TABLE_STOP = "CREATE TABLE stops ("+ALL_COLUMBS[0]+" INTEGER,"+ALL_COLUMBS[1]+" INTEGER,"
+                +ALL_COLUMBS[2]+" TEXT,"+ALL_COLUMBS[3]+" TEXT,"+ALL_COLUMBS[4]+" REAL,"+ALL_COLUMBS[5]+" REAL,"
+                +ALL_COLUMBS[6]+" INTEGER,"+ALL_COLUMBS[7]+" TEXT,"+ALL_COLUMBS[8]+" INTEGER,"+ALL_COLUMBS[9]+" TEXT,"+ALL_COLUMBS[10]+" TEXT)";
 
         protected TABLE_STOP(){
             //empty
@@ -73,7 +81,7 @@ public class DatabaseValues {
         protected final String COLUMB_STOP_ID = "stop_id";
 
         protected final String[] ALL_COLUMBS = {COLUMB_STOP_TIME_ID, COlUMB_TRIP_ID, COLUMB_ARRIVAL_TIME, COLUMB_DEPARTURE_TIME, COLUMB_STOP_ID};
-
+        protected final String CREATE_TABLE_STOP_TIME = "CREATE TABLE stop_times ("+ALL_COLUMBS[0]+" TEXT,"+ALL_COLUMBS[1]+" TEXT,"+ALL_COLUMBS[2]+" INTEGER)";
         protected TABLE_STOP_TIME(){
             //empty
         }
@@ -92,7 +100,8 @@ public class DatabaseValues {
 
         protected final String[] ALL_COLUMBS = {COLUMB_ROUTE_ID, COLUMB_AGENCY_ID, COLUMB_ROUTE_SHORT_NAME, COLUMB_ROUTE_LONG_NAME, COLUMB_ROUTE_DESC,
             COLUMB_ROUTE_TYPE, COLUMB_ROUTE_URL, COLUMB_ROUTE_COLOR, COLUMB_ROUTE_TEXT_COLOR};
-
+        protected final String CREATE_TABLE_ROUTE = "CREATE TABLE routes ("+ALL_COLUMBS[0]+" TEXT,"+ALL_COLUMBS[1]+" TEXT,"+ALL_COLUMBS[2]+" TEXT,"
+                +ALL_COLUMBS[3]+" TEXT,"+ALL_COLUMBS[4]+" TEXT,"+ALL_COLUMBS[5]+" INTEGER,"+ALL_COLUMBS[6]+" TEXT,"+ALL_COLUMBS[7]+" TEXT,"+ALL_COLUMBS[8]+" TEXT)";
         protected TABLE_ROUTE(){
             //empty
         }
