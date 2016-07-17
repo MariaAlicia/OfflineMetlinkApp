@@ -11,67 +11,72 @@
     tools:context="io.hackathon.hackathon2016.MainActivity">
 
     <TextView
+        android:id="@+id/stopLabel"
+        android:text="Enter stop number:"
+        android:textSize="25dp"
+        android:textColor="#ffffff"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="25dp"
-        android:text="Enter stop number:"
         android:layout_marginLeft="20dp"
-        android:textColor="#ffffff"
         android:layout_marginTop="100dp"
-        android:id="@+id/stopInput"/>
+        />
 
     <EditText
+        android:id="@+id/stopInput"
+        android:inputType="phone"
+        android:background="#ffffff"
+        android:maxLength="4"
+        android:paddingLeft="8dp"
+        android:textCursorDrawable="@null"
         android:layout_width="100dp"
         android:layout_height="30dp"
-        android:inputType="phone"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="5dp"
+        android:layout_below="@+id/stopLabel"
+        android:layout_alignLeft="@+id/stopLabel"
+        />
+
+    <Button
+        android:id="@+id/stopGo"
+        android:text="Go"
+        android:textSize="20dp"
+        android:layout_width="70dp"
+        android:layout_height="45dp"
         android:layout_marginLeft="20dp"
-        android:paddingLeft="8dp"
-        android:maxLength="4"
-        android:textCursorDrawable="@null"
-        android:background="#ffffff"
-        android:layout_below="@+id/stopInput"
+        android:layout_below="@+id/stopLabel"
+        android:layout_toRightOf="@+id/stopLabel"
         />
 
     <TextView
+        android:id="@+id/routeLabel"
+        android:text="Or select route:"
+        android:textSize="25dp"
+        android:textColor="#ffffff"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Or"
-        android:textColor="#ffffff"
-        android:textSize="25dp"
         android:layout_marginTop="40dp"
         android:layout_marginLeft="20dp"
-        android:id="@+id/or"
-        android:layout_below="@+id/go"
+        android:layout_below="@+id/stopInput"
         />
-
-    <Button
-        android:layout_width="70dp"
-        android:layout_height="45dp"
-        android:layout_toRightOf="@+id/stopInput"
-        android:textSize="20dp"
-        android:layout_marginLeft="20dp"
-        android:text="Go"
-        android:id="@+id/go"
-        android:layout_below="@+id/stopInput"/>
 
     <Spinner
-        android:id="@+id/spinner"
+        android:id="@+id/routeSpinner"
+        android:background="#ffffff"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/or"
         android:layout_marginTop="10dp"
-        android:layout_marginLeft="20dp"
-        android:background="#ffffff"
+        android:layout_marginLeft="5dp"
+        android:layout_below="@+id/routeLabel"
+        android:layout_alignLeft="@+id/routeLabel"
         />
 
     <Button
+        android:id="@+id/routeGo"
+        android:text="Go"
+        android:textSize="20dp"
         android:layout_width="70dp"
         android:layout_height="45dp"
-        android:layout_toRightOf="@+id/stopInput"
-        android:textSize="20dp"
-        android:layout_marginLeft="20dp"
-        android:text="Go"
-        android:id="@+id/altGo"
-        android:layout_below="@+id/or"/>
+        android:layout_below="@+id/routeLabel"
+        android:layout_alignLeft="@+id/stopGo"
+        />
 </RelativeLayout>

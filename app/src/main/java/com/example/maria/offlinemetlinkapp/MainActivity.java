@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
 
@@ -15,18 +16,23 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     Button stopBtn, routeBtn;
+    EditText stopInput;
+    Spinner routeSpinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+	    super.onCreate(savedInstanceState);
+	    setContentView(R.layout.activity_main);
 
-        stopBtn =(Button)findViewById(R.id.go);
-        routeBtn =(Button)findViewById(R.id.altGo);
-        // Spinner element
-        final Spinner s = (Spinner) findViewById(R.id.spinner);
+	    stopBtn =(Button)findViewById(R.id.stopGo);
+	    routeBtn =(Button)findViewById(R.id.routeGo);
+	    stopInput = (EditText)findViewById(R.id.stopInput);
+	    routeSpinner = (Spinner)findViewById(R.id.routeSpinner);
+	    setupMain();
+    }
 
-        //button for entering stop number
+	private void setupMain(){
+        //Button for entering stop number
         stopBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,23 +56,18 @@ public class MainActivity extends AppCompatActivity {
                 ArrayList<String> busTimes = new ArrayList<String>();
                 busTimes.addAll( Arrays.asList(times));
                 ArrayAdapter<String> listAdapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_list_item_1, busTimes);
-
                 mainListView.setAdapter( listAdapter );
-
-
-
             }
         });
 
         // Spinner click listener
-        assert s != null;
-        s.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        routeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1,
                                        int arg2, long arg3) {
 
-                String items=s.getSelectedItem().toString();
+                String items=routeSpinner.getSelectedItem().toString();
             }
 
             @Override
@@ -93,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         // attaching data adapter to spinner
-        s.setAdapter(dataAdapter);
+        routeSpinner.setAdapter(dataAdapter);
 
         //update database
         //DataController dataController = new DataController();

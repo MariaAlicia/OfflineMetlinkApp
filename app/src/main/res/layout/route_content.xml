@@ -4,19 +4,21 @@
     android:background="#65676d">
 
     <TextView
+        android:id="@+id/headerLabel"
+        android:text="Bus stops"
+        android:textSize="25dp"
+        android:textColor="#ffffff"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="25dp"
-        android:text="Bus stops"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="10dp"
-        android:textColor="#ffffff"
-        android:id="@+id/hi"/>
+        />
 
-    <ListView android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+    <ListView
         android:id="@+id/mainListView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
         android:layout_marginLeft="20dp"
-        android:layout_below="@+id/hi"
+        android:layout_below="@+id/headerLabel"
         />
 </LinearLayout>
