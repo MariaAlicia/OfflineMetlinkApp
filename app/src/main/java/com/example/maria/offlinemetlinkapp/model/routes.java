@@ -1,5 +1,7 @@
 package com.example.maria.offlinemetlinkapp.model;
 
+import android.database.sqlite.SQLiteDatabase;
+
 /**
  * Created by bobl on 7/6/16.
  */

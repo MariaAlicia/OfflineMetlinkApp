@@ -1,8 +1,15 @@
 package com.example.maria.offlinemetlinkapp.helper;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.res.AssetManager;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Scanner;
 
 /**
  * Created by mgoo on 6/07/16.
@@ -44,10 +51,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
      */
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL(CREATE_TABLE_TRIP);
-        db.execSQL(CREATE_TABLE_STOP);
-        db.execSQL(CREATE_TABLE_STOP_TIME);
-        db.execSQL(CREATE_TABLE_ROUTE);
+        db.execSQL(DatabaseValues.TABLE_TRIP.CREATE_TABLE_TRIP);
+        db.execSQL(DatabaseValues.TABLE_STOP.CREATE_TABLE_STOP);
+        db.execSQL(DatabaseValues.TABLE_STOP_TIME.CREATE_TABLE_STOP_TIME);
+        db.execSQL(DatabaseValues.TABLE_ROUTE.CREATE_TABLE_ROUTE);
     }
 
     /**
@@ -67,4 +74,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         // create new tables
         onCreate(db);
     }
+
+    public boolean execStatement(SQLiteDatabase sqLiteDatabase, String statement){
+        sqLiteDatabase.execSQL(statement);
+        return true;
+    }
+
+    public boolean isEmpty(SQLiteDatabase sqLiteDatabase){
+        Cursor c = sqLiteDatabase.rawQuery("SELECT * FROM `" + DatabaseValues.TABLE_TRIP_NAME + "`;", null);
+        boolean isEmpty = (c.getCount() == 0);
+        c.close();
+        return isEmpty;
+    }
+
+
 }

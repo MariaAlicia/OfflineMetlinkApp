@@ -1,8 +1,8 @@
 package com.example.maria.offlinemetlinkapp;
 
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import android.content.res.AssetManager;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -12,49 +12,58 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.maria.offlinemetlinkapp.helper.DatabaseHelper;
+
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
 
 public class MainActivity extends AppCompatActivity {
     Button stopBtn, routeBtn;
-    EditText stopInput;
-    Spinner routeSpinner;
-
+    DatabaseHelper db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-	    super.onCreate(savedInstanceState);
-	    setContentView(R.layout.activity_main);
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
-	    stopBtn =(Button)findViewById(R.id.stopGo);
-	    routeBtn =(Button)findViewById(R.id.routeGo);
-	    stopInput = (EditText)findViewById(R.id.stopInput);
-	    routeSpinner = (Spinner)findViewById(R.id.routeSpinner);
-	    setupListeners();
-    }
+        stopBtn =(Button)findViewById(R.id.go);
+        routeBtn =(Button)findViewById(R.id.altGo);
 
-	private void setupListeners(){
-        //Button for entering stop number
+        db = new DatabaseHelper(getApplicationContext());
+        if (db.isEmpty(db.getReadableDatabase())) {
+            AssetManager assets = getApplicationContext().getAssets();
+            try {
+                String[] file_names = {"metlink_routes.sql", "metlink_stop_times.sql", "metlink_stops.sql", "metlink_trips.sql"};
+                for (int count = 0; count < file_names.length; count++) {
+                    String file_name = file_names[count];
+                    InputStream input = assets.open(file_name);
+                    Scanner scanner = new Scanner(input);
+                    scanner.useDelimiter(";\\n");
+                    while (scanner.hasNext()) {
+                        db.execStatement(db.getWritableDatabase(), scanner.next());
+                    }
+                }
+            } catch (IOException e) {
+            }
+        }
+
+        // Spinner element
+        final Spinner s = (Spinner) findViewById(R.id.spinner);
+
+        //button for entering stop number
         stopBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*setContentView(R.layout.route_content);
+                setContentView(R.layout.route_content);
                 ListView mainListView = (ListView) findViewById( R.id.mainListView );
                 String[] times = new String[]{};//from method
                 ArrayList<String> busTimes = new ArrayList<String>();
                 busTimes.addAll( Arrays.asList(times));
                 ArrayAdapter<String> listAdapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_list_item_1, busTimes);
-                mainListView.setAdapter( listAdapter );*/
-
-	            String stopId = stopInput.getText().toString();
-
-	            if(stopId.length() < 4){
-		            Toast.makeText(MainActivity.this, "Invalid stop", Toast.LENGTH_SHORT).show();
-		            return;
-	            }
-
-	            Intent i = new Intent(getApplicationContext(), StopTimesActivity.class);
-	            startActivity(i);
+                mainListView.setAdapter( listAdapter );
             }
         });
 
@@ -68,18 +77,23 @@ public class MainActivity extends AppCompatActivity {
                 ArrayList<String> busTimes = new ArrayList<String>();
                 busTimes.addAll( Arrays.asList(times));
                 ArrayAdapter<String> listAdapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_list_item_1, busTimes);
+
                 mainListView.setAdapter( listAdapter );
+
+
+
             }
         });
 
         // Spinner click listener
-        routeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        assert s != null;
+        s.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1,
                                        int arg2, long arg3) {
 
-                String items=routeSpinner.getSelectedItem().toString();
+                String items=s.getSelectedItem().toString();
             }
 
             @Override
@@ -106,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         // attaching data adapter to spinner
-        routeSpinner.setAdapter(dataAdapter);
+        s.setAdapter(dataAdapter);
 
         //update database
         //DataController dataController = new DataController();
