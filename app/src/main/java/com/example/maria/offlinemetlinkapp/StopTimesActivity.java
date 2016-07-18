@@ -2,8 +2,11 @@ package com.example.maria.offlinemetlinkapp;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.Arrays;
 
@@ -16,10 +19,21 @@ public class StopTimesActivity extends AppCompatActivity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.route_content);
+		setContentView(R.layout.stop_times_content);
 
-		mainListView = (ListView)findViewById(R.id.mainListView);
+		mainListView = (ListView) findViewById(R.id.mainListView);
+
+		setupList();
+	}
+
+	private void setupList(){
 		ArrayAdapter<String> stopsAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, Arrays.asList("foo", "bar", "metro"));
 		mainListView.setAdapter(stopsAdapter);
+		mainListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+				Toast.makeText(StopTimesActivity.this, mainListView.getItemAtPosition(i).toString(), Toast.LENGTH_SHORT).show();
+			}
+		});
 	}
 }
