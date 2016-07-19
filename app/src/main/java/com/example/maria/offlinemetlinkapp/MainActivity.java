@@ -67,13 +67,23 @@ public class MainActivity extends AppCompatActivity {
         routeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setContentView(R.layout.route_content);
+                /*setContentView(R.layout.route_content);
                 ListView mainListView = (ListView) findViewById( R.id.mainListView );
                 String[] times = new String[]{};//from method
                 ArrayList<String> busTimes = new ArrayList<String>();
                 busTimes.addAll( Arrays.asList(times));
                 ArrayAdapter<String> listAdapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_list_item_1, busTimes);
-                mainListView.setAdapter( listAdapter );
+                mainListView.setAdapter( listAdapter );*/
+
+	            String route = routeSpinner.getSelectedItem().toString();
+
+	            if(route.equals("Jupiter")){
+		            Toast.makeText(MainActivity.this, "Invalid route", Toast.LENGTH_SHORT).show();
+		            return;
+	            }
+
+	            Intent i = new Intent(getApplicationContext(), RoutesActivity.class);
+	            startActivity(i);
             }
         });
 
@@ -96,16 +106,10 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // Spinner Drop down elements (Routes on start up)
-        List<String> route = new ArrayList<String>();//replace this with the getRoutes()
-        route.add("Automobile");
-        route.add("Business Services");
-        route.add("Computers");
-        route.add("Education");
-        route.add("Personal");
-        route.add("Travel");
+        List<String> routes = getRoutes();
 
         // Creating adapter for spinner
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, route);
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, routes);
 
         // Drop down layout style - list view with radio button
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -123,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
 		inputMethodManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
 	}
 
-	public void setupKeyboardHide(View view) {
+	public void setupKeyboardHide(final View view) {
 
 		//Set up touch listener for non-text box views to hide keyboard.
 		if(!(view instanceof EditText)) {
@@ -150,7 +154,7 @@ public class MainActivity extends AppCompatActivity {
 		}
 	}
 
-    public ArrayList getRoutes(){
-        return new ArrayList(8);
+    public List getRoutes(){
+        return Arrays.asList("Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune");
     }
 }
